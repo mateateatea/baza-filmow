@@ -8,9 +8,5 @@ struct Film{
         int obejrzany;
     };
 
-struct Wezel{
-    struct Film film;
-    struct Wezel *nastepny;
-};
 
 #endif
