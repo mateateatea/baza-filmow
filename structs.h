@@ -8,5 +8,13 @@ struct Film{
         int obejrzany;
     };
 
-
+enum Opcje{
+    DODAJ = 1,
+    WYSWIETL = 2,
+    USUN = 3,
+    SZUKAJ = 4,
+    SORTUJ = 5,
+    WYJDZ = 7,
+    STATYSTYKI = 6
+};
 #endif

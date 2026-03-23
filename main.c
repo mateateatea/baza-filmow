@@ -18,19 +18,19 @@ int main(){
         int choice = wyswietl_menu();
         switch (choice)
         {
-        case 1:
+        case DODAJ:
             tablica = dodaj_filmy(tablica,&ile_filmow,&limit);
             break;
-        case 2:
+        case WYSWIETL:
             wyswietl_filmy(tablica,ile_filmow);
             break;
-        case 3:
+        case USUN:
             tablica = usun_filmy(tablica,&ile_filmow);
             break;
-        case 4:
+        case SZUKAJ:
             szukaj_filmu(tablica,ile_filmow);
             break;
-        case 5:
+        case SORTUJ:
             printf("Po jakim kryterium chcesz sortować filmy? \n");
             printf("1. Po kryterium oceny\n");
             printf("2. Alfabetycznie po tytule\n");
@@ -55,11 +55,11 @@ int main(){
                 break;
             }
             break;
-        case 6:
+        case WYJDZ:
             zapisz_filmy(tablica,ile_filmow);
             free(tablica);
             return 0;
-        case 7:
+        case STATYSTYKI:
             statystyki(tablica,ile_filmow);
             break;
         default:

@@ -5,4 +5,4 @@ baza.exe: $(PLIKI)
 	$(CC) $(PLIKI) -o baza.exe
 
 clean:
-	del baza.exe
+	rm -f baza.exe
