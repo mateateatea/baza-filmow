@@ -15,17 +15,7 @@ int main(){
     
     
     while(1){
-        int choice;
-        printf("Witamy w bazie filmów!\n");
-        printf("Wybierz opcję:\n");
-        printf("1. Dodaj filmy\n");
-        printf("2. Wyświetl filmy\n");
-        printf("3. Usuń filmy\n");
-        printf("4. Wpisz tytuł i wyświetl jego statystyki\n");
-        printf("5. Sortuj\n");
-        printf("6. Wyjdź\n");
-        printf("Twój wybór: \n");
-        scanf("%d",&choice);
+        int choice = wyswietl_menu();
         switch (choice)
         {
         case 1:
@@ -41,7 +31,7 @@ int main(){
             szukaj_filmu(tablica,ile_filmow);
             break;
         case 5:
-           printf("Po jakim kryterium chcesz sortować filmy? \n");
+            printf("Po jakim kryterium chcesz sortować filmy? \n");
             printf("1. Po kryterium oceny\n");
             printf("2. Alfabetycznie po tytule\n");
             printf("3. Alfabetycznie po gatunku\n");

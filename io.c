@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include "io.h"
 #include <stdlib.h>
+#include <string.h>
 
 struct Film * wczytaj_filmy(struct Film *tablica, int *ile_filmow, int *limit){
     FILE *plik = fopen("filmy.txt", "r");
@@ -15,12 +16,26 @@ struct Film * wczytaj_filmy(struct Film *tablica, int *ile_filmow, int *limit){
                     return(tablica);
                 }
                 tablica = tmp;
-                
             }
-            int wynik = fscanf(plik, "%s %s %d %d\n",tablica[*ile_filmow].tytul,tablica[*ile_filmow].gatunek, &tablica[*ile_filmow].ocena, &tablica[*ile_filmow].obejrzany);
-            if (wynik != 4){
+
+            char linia[300];
+            char *wynik = fgets(linia, sizeof(linia), plik);
+            if (wynik == NULL){
                 break;
-            } 
+            }
+
+            char *token = strtok(linia, "|");
+            strcpy(tablica[*ile_filmow].tytul, token);
+
+            token = strtok(NULL, "|");
+            strcpy(tablica[*ile_filmow].gatunek, token);
+
+            token = strtok(NULL, "|");
+            tablica[*ile_filmow].ocena = atoi(token);
+
+            token = strtok(NULL, "|");
+            tablica[*ile_filmow].obejrzany = atoi(token);
+
             (*ile_filmow)++;
         }
         fclose(plik);
@@ -35,7 +50,7 @@ void zapisz_filmy(struct Film *tablica, int ile_filmow){
     FILE *plik = fopen("filmy.txt", "w");
     if (plik != NULL){
             for (int i=0;i<ile_filmow;i++){
-                fprintf(plik, "%s %s %d %d\n",tablica[i].tytul, tablica[i].gatunek, tablica[i].ocena, tablica[i].obejrzany);
+                fprintf(plik, "%s|%s|%d|%d\n",tablica[i].tytul, tablica[i].gatunek, tablica[i].ocena, tablica[i].obejrzany);
         }
             fclose(plik);
     }else{
@@ -43,3 +58,4 @@ void zapisz_filmy(struct Film *tablica, int ile_filmow){
     }
     
 }
+

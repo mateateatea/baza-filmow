@@ -4,6 +4,21 @@
 #include <string.h>
 #include "io.h"
 
+int wyswietl_menu(){
+    int choice;
+    printf("Witamy w bazie filmów!\n");
+    printf("Wybierz opcję:\n");
+    printf("1. Dodaj filmy\n");
+    printf("2. Wyświetl filmy\n");
+    printf("3. Usuń filmy\n");
+    printf("4. Wpisz tytuł i wyświetl jego statystyki\n");
+    printf("5. Sortuj\n");
+    printf("6. Wyjdź\n");
+    printf("Twój wybór: \n");
+    scanf("%d",&choice);
+    return choice;
+}
+
 void wyswietl_filmy(struct Film *tablica, int ile_filmow){
     for (int i = 0;i<ile_filmow;i++){
             printf("Tytuł: %s\n", tablica[i].tytul);
@@ -26,8 +41,17 @@ struct Film * dodaj_filmy(struct Film *tablica, int *ile_filmow, int *limit){
                 }
             tablica = tmp;
             }
-            printf("Wpisz film, gatunek, ocene, oraz czy go obejrzales: ");
-            scanf(" %s %s %d %d",tablica[*ile_filmow].tytul,tablica[*ile_filmow].gatunek, &tablica[*ile_filmow].ocena, &tablica[*ile_filmow].obejrzany );
+            getchar();
+            printf("Wpisz tytuł: \n");
+            fgets(tablica[*ile_filmow].tytul, 300, stdin);
+            tablica[*ile_filmow].tytul[strcspn(tablica[*ile_filmow].tytul, "\n")] = '\0';
+            printf("Wpisz gatuenk: \n");
+            fgets(tablica[*ile_filmow].gatunek, 300, stdin);
+            tablica[*ile_filmow].gatunek[strcspn(tablica[*ile_filmow].gatunek, "\n")] = '\0';
+            printf("Wpisz ocenę: \n");
+            scanf(" %d", &tablica[*ile_filmow].ocena);
+            printf("Wpisz czy obejrzany: \n");
+            scanf(" %d", &tablica[*ile_filmow].obejrzany);
             (*ile_filmow)++;
             char cnt;
             printf("Czy chcesz dodac kolejny film? Wpisz 't', jeśli tak, lub 'n', jeśli nie: ");
@@ -126,3 +150,7 @@ int porownaj_gatunek(struct Film *a, struct Film *b){
         return 0;
     }
 }
+
+
+
+
