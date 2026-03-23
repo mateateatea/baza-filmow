@@ -77,8 +77,8 @@ struct Film * usun_filmy(struct Film *tablica, int *ile_filmow){
     int usun;
     if (scanf("%d",&usun) == 1 && usun>0 && usun<=*ile_filmow){
         usun--;
-        for (usun;usun<*ile_filmow;usun++){
-        tablica[usun] = tablica[usun+1];
+        for (usun;usun<*ile_filmow-1;usun++){
+            tablica[usun] = tablica[usun+1];
     }
     (*ile_filmow)--;
     }else{
@@ -91,23 +91,24 @@ struct Film * usun_filmy(struct Film *tablica, int *ile_filmow){
 
 void szukaj_filmu(struct Film *tablica, int ile_filmow){
     char tytul[100];
-            int znalezione = 0;
-            printf("Wpisz tytuł: \n");
-            scanf("%s", tytul);
-            for (int i = 0; i<ile_filmow;i++){
-                if(strcmp(tytul, tablica[i].tytul)==0){
-                    znalezione = 1;
-                    printf("Gatunek: %s\n", tablica[i].gatunek);
-                    printf("Ocena: %d/10\n", tablica[i].ocena);
-                    printf("Obejrzany: %s\n", tablica[i].obejrzany ? "tak" : "nie");
-                    printf("\n");
-                }
-            
-            }
-            if (znalezione == 0){
-                printf("Nie znaleziono!\n");
-                printf("\n");
-            }
+    int znalezione = 0;
+    printf("Wpisz tytuł: \n");
+    fgets(tytul,100,stdin);
+    tytul[strcspn(tytul,"\n")] = '\0';
+    for (int i = 0; i<ile_filmow;i++){
+        if(strcmp(tytul, tablica[i].tytul)==0){
+            znalezione = 1;
+            printf("Gatunek: %s\n", tablica[i].gatunek);
+            printf("Ocena: %d/10\n", tablica[i].ocena);
+            printf("Obejrzany: %s\n", tablica[i].obejrzany ? "tak" : "nie");
+            printf("\n");
+        }
+    
+    }
+    if (znalezione == 0){
+        printf("Nie znaleziono!\n");
+        printf("\n");
+    }
 }
 
 void sortuj(struct Film *tablica, int *ile_filmow, int(*compare)(struct Film *,struct Film *)){
@@ -134,7 +135,7 @@ int porownaj_ocene(struct Film *a,struct Film *b){
 int porownaj_tytul(struct Film *a, struct Film *b){
     int wynik;
     wynik =  strcmp(a->tytul,b->tytul);
-    if (wynik == 1){
+    if (wynik > 0){
         return 1;
     }else{
         return 0;
@@ -144,7 +145,7 @@ int porownaj_tytul(struct Film *a, struct Film *b){
 int porownaj_gatunek(struct Film *a, struct Film *b){
     int wynik; 
     wynik = strcmp(a->gatunek,b->gatunek);
-    if (wynik == 1){
+    if (wynik > 1){
         return 1;
     }else{
         return 0;
