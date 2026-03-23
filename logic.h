@@ -13,5 +13,7 @@ int porownaj_ocene(struct Film *a,struct Film *b);
 int porownaj_tytul(struct Film *a,struct Film *b);
 int porownaj_gatunek(struct Film *a,struct Film *b);
 void statystyki(struct Film *tablica, int ile_filmow);
+int wczytaj_int_z_zakresu(int min, int max, char *typ);
+
 
 #endif

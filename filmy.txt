@@ -4,3 +4,6 @@ Spider man|scifi|7|0
 Star Wars|scifi|6|0
 diuna|scifi|7|1
 shrek|bajka|10|1
+Marsjanin|scifi|8|1
+Siemaneczko|elo|1|1
+Piraci z karaib¢w|piraci|4|0

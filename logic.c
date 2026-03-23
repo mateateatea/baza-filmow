@@ -49,10 +49,16 @@ struct Film * dodaj_filmy(struct Film *tablica, int *ile_filmow, int *limit){
             printf("Wpisz gatuenk: \n");
             fgets(tablica[*ile_filmow].gatunek, 300, stdin);
             tablica[*ile_filmow].gatunek[strcspn(tablica[*ile_filmow].gatunek, "\n")] = '\0';
-            printf("Wpisz ocenę: \n");
-            scanf(" %d", &tablica[*ile_filmow].ocena);
-            printf("Wpisz czy obejrzany: \n");
-            scanf(" %d", &tablica[*ile_filmow].obejrzany);
+            tablica[*ile_filmow].ocena = wczytaj_int_z_zakresu(1,10,"ocenę: \n");
+            tablica[*ile_filmow].obejrzany = wczytaj_int_z_zakresu(0,1,"czy obejrzany: \n");
+            /*do{
+                printf("Wpisz ocenę: \n");
+                scanf(" %d", &tablica[*ile_filmow].ocena);
+            }while(tablica[*ile_filmow].ocena<1 || tablica[*ile_filmow].ocena > 10);
+            do{
+                printf("Wpisz czy obejrzany: \n");
+                scanf(" %d", &tablica[*ile_filmow].obejrzany);
+            }while(tablica[*ile_filmow].obejrzany<0||tablica[*ile_filmow].obejrzany>1);*/
             (*ile_filmow)++;
             char cnt;
             printf("Czy chcesz dodac kolejny film? Wpisz 't', jeśli tak, lub 'n', jeśli nie: ");
@@ -187,3 +193,11 @@ void statystyki(struct Film *tablica, int ile_filmow){
     }
 }
 
+int wczytaj_int_z_zakresu(int min, int max, char *typ){
+    int number;
+    do{
+        printf("Wpisz %s", typ);
+        scanf(" %d", &number);
+    }while(number<min || number > max);
+    return number;
+}
