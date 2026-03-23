@@ -1,5 +1,6 @@
-tescik|kurwa|6|1
-diuna|scifi|7|1
 1917|wojenny|7|1
-shrek|bajka|10|1
 Harry Potter|Fantasy|8|1
+Spider man|scifi|7|0
+Star Wars|scifi|6|0
+diuna|scifi|7|1
+shrek|bajka|10|1

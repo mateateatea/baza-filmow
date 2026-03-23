@@ -14,6 +14,7 @@ int wyswietl_menu(){
     printf("4. Wpisz tytuł i wyświetl jego statystyki\n");
     printf("5. Sortuj\n");
     printf("6. Wyjdź\n");
+    printf("7. Statystyki\n");
     printf("Twój wybór: \n");
     scanf("%d",&choice);
     return choice;
@@ -21,11 +22,11 @@ int wyswietl_menu(){
 
 void wyswietl_filmy(struct Film *tablica, int ile_filmow){
     for (int i = 0;i<ile_filmow;i++){
-            printf("Tytuł: %s\n", tablica[i].tytul);
-            printf("Gatunek: %s\n", tablica[i].gatunek);
-            printf("Ocena: %d/10\n", tablica[i].ocena);
-            printf("Obejrzany: %s\n", tablica[i].obejrzany ? "tak" : "nie");
-            printf("\n");
+        printf("Tytuł: %s\n", tablica[i].tytul);
+        printf("Gatunek: %s\n", tablica[i].gatunek);
+        printf("Ocena: %d/10\n", tablica[i].ocena);
+        printf("Obejrzany: %s\n", tablica[i].obejrzany ? "tak" : "nie");
+        printf("\n");
 }
 }
 
@@ -93,6 +94,7 @@ void szukaj_filmu(struct Film *tablica, int ile_filmow){
     char tytul[100];
     int znalezione = 0;
     printf("Wpisz tytuł: \n");
+    getchar();
     fgets(tytul,100,stdin);
     tytul[strcspn(tytul,"\n")] = '\0';
     for (int i = 0; i<ile_filmow;i++){
@@ -152,6 +154,36 @@ int porownaj_gatunek(struct Film *a, struct Film *b){
     }
 }
 
-
-
+void statystyki(struct Film *tablica, int ile_filmow){
+    printf("Wybierz którą statystykę chcesz zobaczyć: \n");
+    printf("1. Średnia ocen z filmów. \n");
+    printf("2. Których filmów jeszcze nie obejrzałeś. \n");
+    int choice;
+    int value = 0;
+    float avg;
+    int counter = 1;
+    scanf("%d", &choice);
+    switch (choice)
+    {
+    case 1:
+        for (int i = 0; i<ile_filmow;i++){
+            value += tablica[i].ocena;
+        }
+        avg = (float)value / ile_filmow;
+        printf("Twoja średnia wynosi: %.1lf\n", avg);
+        break;
+    case 2:
+        printf("Nie obejrzałeś jeszcze: \n");
+        for (int i = 0; i<ile_filmow;i++){
+            if (tablica[i].obejrzany == 0){
+                printf("%d. %s\n",counter, tablica[i].tytul);
+                counter++;
+            }
+        }
+        printf("\n");
+        break;
+    default:
+        break;
+    }
+}
 

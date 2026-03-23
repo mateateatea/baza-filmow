@@ -59,6 +59,9 @@ int main(){
             zapisz_filmy(tablica,ile_filmow);
             free(tablica);
             return 0;
+        case 7:
+            statystyki(tablica,ile_filmow);
+            break;
         default:
             break;
         }

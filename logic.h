@@ -12,5 +12,6 @@ void sortuj(struct Film *tablica, int *ile_filmow, int(*compare)(struct Film *,s
 int porownaj_ocene(struct Film *a,struct Film *b);
 int porownaj_tytul(struct Film *a,struct Film *b);
 int porownaj_gatunek(struct Film *a,struct Film *b);
+void statystyki(struct Film *tablica, int ile_filmow);
 
 #endif
