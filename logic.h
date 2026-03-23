@@ -3,6 +3,7 @@
 
 #include "structs.h"
 
+int wyswietl_menu();
 void wyswietl_filmy(struct Film *tablica, int ile_filmow);
 struct Film * dodaj_filmy(struct Film *tablica, int *ile_filmow, int *limit);
 struct Film * usun_filmy(struct Film *tablica, int *ile_filmow);
