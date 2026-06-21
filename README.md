@@ -1,6 +1,7 @@
 Command-line film database written in C. Supports adding, removing, searching and sorting films, with persistent file storage and basic statistics.
 
 ![Main menu Screenshot](menu.png)
+
 ![Watch list Screenshot](list.png)
 
 ## Features
