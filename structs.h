@@ -14,7 +14,7 @@ enum Opcje{
     USUN = 3,
     SZUKAJ = 4,
     SORTUJ = 5,
-    WYJDZ = 7,
-    STATYSTYKI = 6
+    WYJDZ = 6,
+    STATYSTYKI = 7
 };
 #endif
